@@ -6,14 +6,15 @@
 #fatorado por algum método de substituição avançada ou atrasada (ver algoritmos pág. 129 - Pulino [8])
 
 import numpy as np
-
-
 def lu_decomposition(A):
     n = A.shape[0]
     L = np.eye(n)
     U = A.copy()
+    epsilon = 1e-10
     for j in range(n-1):
         for i in range(j+1, n):
+            if abs(U[j, j]) < epsilon:
+                U[j, j] += epsilon
             L[i, j] = U[i, j] / U[j, j]
             U[i, j:] = U[i, j:] - L[i, j] * U[j, j:]
     return L, U
@@ -47,6 +48,10 @@ def solve_lu():
     b = np.zeros(n)
     print("Digite os elementos do vetor b:")
     b[:] = input().split()
+    det = np.linalg.det(A)
+    if abs(det) < 1e-10:
+        print("A matriz é singular e a fatoração LU não pode ser realizada.")
+        return
     L, U = lu_decomposition(A)
     y = forward_substitution(L, b)
     x = backward_substitution(U, y)
@@ -54,5 +59,6 @@ def solve_lu():
 
 x = solve_lu()
 
-print("Solução:")
-print(f"X^(t) ={x}") #resultado é a matriz transposta
+if x is not None:
+    print("Solução:")
+    print(f"X^(t) = {x}")
