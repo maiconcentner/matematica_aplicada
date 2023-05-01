@@ -51,6 +51,8 @@ else:
 
     print(pi)
 
+# Plotagem do gráfico #
+
     import matplotlib.pyplot as plt
 
     # Define as coordenadas das retas
@@ -61,8 +63,8 @@ else:
     y2_vals = [y3, y4]
 
     # Plota as retas
-    plt.plot(x1_vals, y1_vals, label="Reta 1")
-    plt.plot(x2_vals, y2_vals, label="Reta 2")
+    plt.plot(x1_vals, y1_vals, label="Reta 1", color="gray")
+    plt.plot(x2_vals, y2_vals, label="Reta 2", color="blue")
 
     # Plota o ponto de interseção
     plt.scatter(xi, yi, color="red", label="Ponto de interseção")
