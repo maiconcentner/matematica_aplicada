@@ -1,4 +1,12 @@
+#Soluções computacionais de sistemas lineares são necessárias, por exemplo, em aplicações ou em 
+#problemas reais de grande porte, onde invariavelmente nos deparamos com matrizes de grandes dimensões.
+#Sendo assim, implemente computacionalmente os algoritmos abaixo para resolver Ax=b, se A estiver 
+#na forma escalonada triangular superior ou triangular inferior. Caso contrário, aplicar a fatoração LU em A 
+#(Ver pág. 131 - Pulino [8]; Ver também exercício 24, pág. 70 - Anton [1]). Em seguida, resolva o sistema 
+#fatorado por algum método de substituição avançada ou atrasada (ver algoritmos pág. 129 - Pulino [8])
+
 import numpy as np
+
 
 def lu_decomposition(A):
     n = A.shape[0]
