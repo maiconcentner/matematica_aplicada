@@ -31,3 +31,45 @@ reta2_p2 = input('RETA 2 (2º PONTO) - Insira a coordenada P4=(x4,y4) da reta 2:
 x4, y4 = reta2_p2.split(",")
 x4 = float(x4)
 y4 = float(y4)
+
+# Cálculo da inclinação das retas
+m1 = (y2-y1) / (x2-x1) #reta 1
+m2 = (y4-y3) / (x4-x3) #reta 2
+
+# Cálculo das constantes de inclinação
+b1 = y1 - m1*x1
+b2 = y3 - m2*x3
+
+# Cálculo do ponto de interseção
+xi = round((b2 - b1) / (m1 - m2),2)
+yi = round((m1*xi + b1),2)
+pi = (xi,yi)
+
+print(pi)
+
+import matplotlib.pyplot as plt
+
+# Define as coordenadas das retas
+x1_vals = [x1, x2]
+y1_vals = [y1, y2]
+
+x2_vals = [x3, x4]
+y2_vals = [y3, y4]
+
+# Plota as retas
+plt.plot(x1_vals, y1_vals, label="Reta 1")
+plt.plot(x2_vals, y2_vals, label="Reta 2")
+
+# Plota o ponto de interseção
+plt.scatter(xi, yi, color="red", label="Ponto de interseção")
+
+# Define os rótulos dos eixos e o título do gráfico
+plt.xlabel("Eixo x")
+plt.ylabel("Eixo y")
+plt.title("Interseção de retas")
+
+# Adiciona a legenda
+plt.legend()
+
+# Exibe o gráfico
+plt.show()
